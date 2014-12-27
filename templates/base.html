@@ -148,6 +148,19 @@
 <!-- End Banner -->
 <div class="container">
     <div class="row">
+
+        {% if not HIDE_SIDEBAR or ABOUT_ME %}
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+                {% if ABOUT_ME %}
+                {% include 'includes/aboutme.html' %}
+                {% endif %}
+                {% if not HIDE_SIDEBAR %}
+                {% include 'includes/sidebar.html' %}
+                {% endif %}
+            </aside>
+        </div>
+        {% endif %}
         {% if not HIDE_SIDEBAR or ABOUT_ME %}
         <div class="col-sm-9">
         {% else %}
@@ -159,18 +172,7 @@
         {% block content %}
         {% endblock %}
         </div>
-        {% if not HIDE_SIDEBAR or ABOUT_ME %}
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-            {% if ABOUT_ME %}
-                {% include 'includes/aboutme.html' %}
-            {% endif %}
-            {% if not HIDE_SIDEBAR %}
-                {% include 'includes/sidebar.html' %}
-            {% endif %}
-            </aside>
-        </div>
-        {% endif %}
+
     </div>
 </div>
 {% include 'includes/footer.html' %}
